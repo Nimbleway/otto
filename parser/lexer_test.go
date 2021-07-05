@@ -3,9 +3,9 @@ package parser
 import (
 	"testing"
 
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/terst"
-	"github.com/robertkrimen/otto/token"
+	"proxit.com/otto/file"
+	"proxit.com/otto/terst"
+	"proxit.com/otto/token"
 )
 
 var tt = terst.Terst

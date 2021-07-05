@@ -6,9 +6,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/file"
-	"github.com/robertkrimen/otto/underscore"
+	"proxit.com/otto/ast"
+	"proxit.com/otto/file"
+	"proxit.com/otto/underscore"
 )
 
 func firstErr(err error) error {
