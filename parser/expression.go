@@ -307,12 +307,56 @@ func (self *_parser) parseObjectProperty() ast.Property {
 	if self.mode&StoreComments != 0 {
 		self.comments.MarkComments(ast.COLON)
 	}
-	self.expect(token.COLON)
 
-	exp := ast.Property{
-		Key:   value,
-		Kind:  "value",
-		Value: self.parseAssignmentExpression(),
+	var exp ast.Property
+	if self.token != token.COLON {
+		// skip over
+		// try to find value in local scope
+
+		name := value
+
+		var expValue *ast.Expression = nil
+
+		for _, declaration := range self.scope.declarationList {
+			switch value := declaration.(type) {
+			case *ast.VariableDeclaration:
+				for _, subDeclaration := range value.List {
+					if subDeclaration.Name == name {
+						expValue = &subDeclaration.Initializer
+						break
+					}
+				}
+			}
+
+			if expValue != nil {
+				break
+			}
+		}
+
+		if expValue != nil {
+			exp = ast.Property{
+				Key:   value,
+				Kind:  "value",
+				Value: *expValue,
+			}
+		} else {
+			// fake it
+			exp = ast.Property{
+				Key:   value,
+				Kind:  "value",
+				Value: &ast.StringLiteral{Idx: self.idx, Literal: value, Value: value},
+			}
+		}
+
+		self.idx++
+	} else {
+		self.expect(token.COLON)
+
+		exp = ast.Property{
+			Key:   value,
+			Kind:  "value",
+			Value: self.parseAssignmentExpression(),
+		}
 	}
 
 	if self.mode&StoreComments != 0 {
