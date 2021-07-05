@@ -1,8 +1,8 @@
 package otto
 
 import (
-	"github.com/robertkrimen/otto/ast"
-	"github.com/robertkrimen/otto/file"
+	"proxit.com/otto/ast"
+	"proxit.com/otto/file"
 )
 
 type _file struct {

@@ -2,7 +2,7 @@ package parser
 
 import (
 	"fmt"
-	"github.com/robertkrimen/otto/ast"
+	"proxit.com/otto/ast"
 	"reflect"
 	"testing"
 )
