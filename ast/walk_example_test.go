@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 
-	"proxit.com/otto/ast"
 	"proxit.com/otto/file"
 	"proxit.com/otto/parser"
 )
@@ -14,14 +13,14 @@ type walkExample struct {
 	shift  file.Idx
 }
 
-func (w *walkExample) Enter(n ast.Node) ast.Visitor {
-	if id, ok := n.(*ast.Identifier); ok && id != nil {
+func (w *walkExample) Enter(n Node) Visitor {
+	if id, ok := n.(*Identifier); ok && id != nil {
 		idx := n.Idx0() + w.shift - 1
 		s := w.source[:idx] + "new_" + w.source[idx:]
 		w.source = s
 		w.shift += 4
 	}
-	if v, ok := n.(*ast.VariableExpression); ok && v != nil {
+	if v, ok := n.(*VariableExpression); ok && v != nil {
 		idx := n.Idx0() + w.shift - 1
 		s := w.source[:idx] + "varnew_" + w.source[idx:]
 		w.source = s
@@ -31,7 +30,7 @@ func (w *walkExample) Enter(n ast.Node) ast.Visitor {
 	return w
 }
 
-func (w *walkExample) Exit(n ast.Node) {
+func (w *walkExample) Exit(n Node) {
 	// AST node n has had all its children walked. Pop it out of your
 	// stack, or do whatever processing you need to do, if any.
 }
@@ -45,7 +44,7 @@ func ExampleVisitor_codeRewrite() {
 
 	w := &walkExample{source: source}
 
-	ast.Walk(w, program)
+	Walk(w, program)
 
 	fmt.Println(w.source)
 	// Output: var varnew_b = function() {new_test(); try {} catch(new_e) {} var varnew_test = "test(); var test = 1"} // test
