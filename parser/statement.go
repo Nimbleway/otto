@@ -2,6 +2,7 @@ package parser
 
 import (
 	"proxit.com/otto/ast"
+	"proxit.com/otto/file"
 	"proxit.com/otto/token"
 )
 
@@ -82,7 +83,7 @@ func (self *_parser) parseStatement() ast.Statement {
 		return self.parseDebuggerStatement()
 	case token.WITH:
 		return self.parseWithStatement()
-	case token.VAR:
+	case token.VAR, token.CONST:
 		return self.parseVariableStatement()
 	case token.FUNCTION:
 		return self.parseFunctionStatement()
@@ -582,7 +583,7 @@ func (self *_parser) parseForOrForInStatement() ast.Statement {
 
 		allowIn := self.scope.allowIn
 		self.scope.allowIn = false
-		if self.token == token.VAR {
+		if self.token == token.VAR || self.token == token.CONST {
 			var_ := self.idx
 			var varComments []*ast.Comment
 			if self.mode&StoreComments != 0 {
@@ -650,7 +651,12 @@ func (self *_parser) parseVariableStatement() *ast.VariableStatement {
 	if self.mode&StoreComments != 0 {
 		comments = self.comments.FetchAll()
 	}
-	idx := self.expect(token.VAR)
+	var idx file.Idx
+	if self.token == token.VAR {
+		idx = self.expect(token.VAR)
+	} else {
+		idx = self.expect(token.CONST)
+	}
 
 	list := self.parseVariableDeclarationList(idx)
 
@@ -912,7 +918,7 @@ func (self *_parser) nextStatement() {
 		switch self.token {
 		case token.BREAK, token.CONTINUE,
 			token.FOR, token.IF, token.RETURN, token.SWITCH,
-			token.VAR, token.DO, token.TRY, token.WITH,
+			token.VAR, token.CONST, token.DO, token.TRY, token.WITH,
 			token.WHILE, token.THROW, token.CATCH, token.FINALLY:
 			// Return only if parser made some progress since last
 			// sync or if it has not reached 10 next calls without

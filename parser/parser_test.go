@@ -62,6 +62,11 @@ func TestParseFile(t *testing.T) {
 
 		_, err = ParseFile(nil, "/make-sure-file-path-is-returned-not-anonymous", `a..`, 0)
 		is(err, "/make-sure-file-path-is-returned-not-anonymous: Line 1:3 Unexpected token .")
+
+		value, err := ParseFile(nil, "", "const config = require(\"./config\");\nconsole.log(config.endpoint);", 0)
+		is(err, nil)
+		is(len(value.DeclarationList), 1)
+		is(value.DeclarationList[0].(*ast.VariableDeclaration).List[0].Name, "config")
 	})
 }
 
