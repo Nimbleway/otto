@@ -48,9 +48,9 @@ var parseInt_alphabetTable = func() []string {
 	for radix := 3; radix <= 36; radix += 1 {
 		alphabet := table[radix-1]
 		if radix <= 10 {
-			alphabet += string(radix + 47)
+			alphabet += string([]byte{uint8(radix + 47)})
 		} else {
-			alphabet += string(radix+54) + string(radix+86)
+			alphabet += string([]byte{uint8(radix + 54), uint8(radix + 86)})
 		}
 		table = append(table, alphabet)
 	}

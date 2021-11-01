@@ -4,23 +4,24 @@ import (
 	"log"
 	"testing"
 
+	"proxit.com/otto/ast"
 	"proxit.com/otto/file"
 	"proxit.com/otto/parser"
 )
 
 type walker struct {
-	stack  []Node
+	stack  []ast.Node
 	source string
 	shift  file.Idx
 }
 
 // push and pop below are to prove the symmetry of Enter/Exit calls
 
-func (w *walker) push(n Node) {
+func (w *walker) push(n ast.Node) {
 	w.stack = append(w.stack, n)
 }
 
-func (w *walker) pop(n Node) {
+func (w *walker) pop(n ast.Node) {
 	size := len(w.stack)
 	if size <= 0 {
 		panic("pop of empty stack")
@@ -35,16 +36,16 @@ func (w *walker) pop(n Node) {
 	w.stack = w.stack[:size-1]
 }
 
-func (w *walker) Enter(n Node) Visitor {
+func (w *walker) Enter(n ast.Node) ast.Visitor {
 	w.push(n)
 
-	if id, ok := n.(*Identifier); ok && id != nil {
+	if id, ok := n.(*ast.Identifier); ok && id != nil {
 		idx := n.Idx0() + w.shift - 1
 		s := w.source[:idx] + "new_" + w.source[idx:]
 		w.source = s
 		w.shift += 4
 	}
-	if v, ok := n.(*VariableExpression); ok && v != nil {
+	if v, ok := n.(*ast.VariableExpression); ok && v != nil {
 		idx := n.Idx0() + w.shift - 1
 		s := w.source[:idx] + "varnew_" + w.source[idx:]
 		w.source = s
@@ -54,7 +55,7 @@ func (w *walker) Enter(n Node) Visitor {
 	return w
 }
 
-func (w *walker) Exit(n Node) {
+func (w *walker) Exit(n ast.Node) {
 	w.pop(n)
 }
 
@@ -67,7 +68,7 @@ func TestVisitorRewrite(t *testing.T) {
 
 	w := &walker{source: source}
 
-	Walk(w, program)
+	ast.Walk(w, program)
 
 	xformed := `var varnew_b = function() {new_test(); try {} catch(new_e) {} var varnew_test = "test(); var test = 1"} // test`
 

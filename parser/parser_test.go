@@ -435,9 +435,9 @@ func TestParserErr(t *testing.T) {
 			test("abc.class = 1", nil)
 			test("var class;", "(anonymous): Line 1:5 Unexpected reserved word")
 
-			test("const", "(anonymous): Line 1:1 Unexpected reserved word")
+			test("const", "(anonymous): Line 1:6 Unexpected end of input")
 			test("abc.const = 1", nil)
-			test("var const;", "(anonymous): Line 1:5 Unexpected reserved word")
+			test("var const;", "(anonymous): Line 1:5 Unexpected token const")
 
 			test("enum", "(anonymous): Line 1:1 Unexpected reserved word")
 			test("abc.enum = 1", nil)
