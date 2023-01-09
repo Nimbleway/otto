@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"proxit.com/otto/ast"
-	"proxit.com/otto/file"
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/ast"
+	"github.com/Nimbleway/otto/file"
+	"github.com/Nimbleway/otto/token"
 )
 
 func (self *_parser) parseBlockStatement() *ast.BlockStatement {

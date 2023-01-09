@@ -1,6 +1,6 @@
 # registry
 --
-    import "proxit.com/otto/registry"
+    import "github.com/Nimbleway/otto/registry"
 
 Package registry is an expirmental package to facillitate altering the otto
 runtime via import.

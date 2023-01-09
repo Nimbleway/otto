@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/token"
 )
 
 func (self *_runtime) cmpl_evaluate_nodeStatement(node _nodeStatement) Value {

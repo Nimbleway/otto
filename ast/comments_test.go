@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"proxit.com/otto/file"
+	"github.com/Nimbleway/otto/file"
 	"testing"
 )
 

@@ -13,8 +13,8 @@ import (
 	"strings"
 	"sync"
 
-	"proxit.com/otto/ast"
-	"proxit.com/otto/parser"
+	"github.com/Nimbleway/otto/ast"
+	"github.com/Nimbleway/otto/parser"
 )
 
 type _global struct {

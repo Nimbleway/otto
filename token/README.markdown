@@ -1,6 +1,6 @@
 # token
 --
-    import "proxit.com/otto/token"
+    import "github.com/Nimbleway/otto/token"
 
 Package token defines constants representing the lexical tokens of JavaScript
 (ECMA5).

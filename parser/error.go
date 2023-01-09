@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sort"
 
-	"proxit.com/otto/file"
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/file"
+	"github.com/Nimbleway/otto/token"
 )
 
 const (
@@ -120,7 +120,6 @@ func (self *_parser) errorUnexpectedToken(tkn token.Token) error {
 }
 
 // ErrorList is a list of *Errors.
-//
 type ErrorList []*Error
 
 // Add adds an Error with given position and message to an ErrorList.

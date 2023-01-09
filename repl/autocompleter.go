@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"proxit.com/otto"
+	"github.com/Nimbleway/otto"
 )
 
 type autoCompleter struct {

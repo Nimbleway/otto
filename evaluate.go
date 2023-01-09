@@ -5,7 +5,7 @@ import (
 	"math"
 	"strings"
 
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/token"
 )
 
 func (self *_runtime) evaluateMultiply(left float64, right float64) Value {

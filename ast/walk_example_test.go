@@ -2,11 +2,11 @@ package ast_test
 
 import (
 	"fmt"
+	"github.com/Nimbleway/otto/ast"
 	"log"
-	"proxit.com/otto/ast"
 
-	"proxit.com/otto/file"
-	"proxit.com/otto/parser"
+	"github.com/Nimbleway/otto/file"
+	"github.com/Nimbleway/otto/parser"
 )
 
 type walkExample struct {

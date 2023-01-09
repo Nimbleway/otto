@@ -2,7 +2,7 @@ package ast
 
 import (
 	"fmt"
-	"proxit.com/otto/file"
+	"github.com/Nimbleway/otto/file"
 )
 
 // CommentPosition determines where the comment is in a given context

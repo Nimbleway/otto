@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"proxit.com/otto/ast"
+	"github.com/Nimbleway/otto/ast"
 )
 
 func marshal(name string, children ...interface{}) interface{} {

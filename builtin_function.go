@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	"proxit.com/otto/parser"
+	"github.com/Nimbleway/otto/parser"
 )
 
 // Function

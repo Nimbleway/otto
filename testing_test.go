@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"proxit.com/otto/terst"
+	"github.com/Nimbleway/otto/terst"
 )
 
 func tt(t *testing.T, arguments ...func()) {

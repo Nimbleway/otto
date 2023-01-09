@@ -1,17 +1,16 @@
 /*
 Package ast declares types representing a JavaScript AST.
 
-Warning
+# Warning
 
 The parser and AST interfaces are still works-in-progress (particularly where
 node types are concerned) and may change in the future.
-
 */
 package ast
 
 import (
-	"proxit.com/otto/file"
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/file"
+	"github.com/Nimbleway/otto/token"
 )
 
 // All nodes implement the Node interface.

@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"proxit.com/otto/ast"
+	"github.com/Nimbleway/otto/ast"
 )
 
 type _scope struct {

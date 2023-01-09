@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"regexp"
 
-	"proxit.com/otto/ast"
-	"proxit.com/otto/file"
-	"proxit.com/otto/token"
+	"github.com/Nimbleway/otto/ast"
+	"github.com/Nimbleway/otto/file"
+	"github.com/Nimbleway/otto/token"
 )
 
 var trueLiteral = &_nodeLiteral{value: toValue_bool(true)}

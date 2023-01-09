@@ -1,16 +1,16 @@
 # otto
 --
 ```go
-import "proxit.com/otto"
+import "github.com/Nimbleway/otto"
 ```
 
 Package otto is a JavaScript parser and interpreter written natively in Go.
 
-http://godoc.org/proxit.com/otto
+http://godoc.org/github.com/Nimbleway/otto
 
 ```go
 import (
-   "proxit.com/otto"
+   "github.com/Nimbleway/otto"
 )
 ```
 
@@ -109,7 +109,7 @@ result, _ = vm.Run(`
 A separate parser is available in the parser package if you're just interested
 in building an AST.
 
-http://godoc.org/proxit.com/otto/parser
+http://godoc.org/github.com/Nimbleway/otto/parser
 
 Parse and return an AST
 
@@ -136,9 +136,9 @@ program, err := parser.ParseFile(nil, filename, src, 0)
 ### otto
 
 You can run (Go) JavaScript from the commandline with:
-http://proxit.com/otto/tree/master/otto
+http://github.com/Nimbleway/otto/tree/master/otto
 
-    $ go get -v proxit.com/otto/otto
+    $ go get -v github.com/Nimbleway/otto/otto
 
 Run JavaScript by entering some source on stdin or by giving otto a filename:
 
@@ -151,14 +151,14 @@ import:
 
 ```go
 import (
-    "proxit.com/otto"
-    _ "proxit.com/otto/underscore"
+    "github.com/Nimbleway/otto"
+    _ "github.com/Nimbleway/otto/underscore"
 )
 
 // Now every otto runtime will come loaded with underscore
 ```
 
-For more information: http://proxit.com/otto/tree/master/underscore
+For more information: http://github.com/Nimbleway/otto/tree/master/underscore
 
 
 ### Caveat Emptor
@@ -207,7 +207,7 @@ import (
     "os"
     "time"
 
-    "proxit.com/otto"
+    "github.com/Nimbleway/otto"
 )
 
 var halt = errors.New("Stahp")

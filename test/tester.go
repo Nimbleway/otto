@@ -12,8 +12,8 @@ import (
 	"sync"
 	"text/tabwriter"
 
-	"proxit.com/otto"
-	"proxit.com/otto/parser"
+	"github.com/Nimbleway/otto"
+	"github.com/Nimbleway/otto/parser"
 )
 
 var flag_test *bool = flag.Bool("test", false, "")

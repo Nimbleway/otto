@@ -1,4 +1,4 @@
-module proxit.com/otto
+module github.com/Nimbleway/otto
 
 go 1.16
 

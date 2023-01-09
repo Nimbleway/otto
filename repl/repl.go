@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"proxit.com/otto"
+	"github.com/Nimbleway/otto"
 	"gopkg.in/readline.v1"
 )
 

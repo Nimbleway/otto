@@ -1,6 +1,6 @@
 # ast
 --
-    import "proxit.com/otto/ast"
+    import "github.com/Nimbleway/otto/ast"
 
 Package ast declares types representing a JavaScript AST.
 

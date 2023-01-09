@@ -1,6 +1,6 @@
 # file
 --
-    import "proxit.com/otto/file"
+    import "github.com/Nimbleway/otto/file"
 
 Package file encapsulates the file abstractions used by the ast & parser.
 
